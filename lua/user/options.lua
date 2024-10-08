@@ -1,7 +1,5 @@
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
--- vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
--- vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
 vim.opt.hlsearch = true                         -- highlight all matches on previous search pattern
@@ -9,7 +7,6 @@ vim.opt.ignorecase = true                       -- ignore case in search pattern
 vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
 vim.opt.mousescroll = "ver:1,hor:1"
 vim.opt.pumheight = 10                          -- pop up menu height
--- vim.opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
 vim.opt.showtabline = 4                         -- always show tabs
 vim.opt.smartcase = true                        -- smart case
 vim.opt.smartindent = true                      -- make indenting smarter again
@@ -30,13 +27,9 @@ vim.opt.relativenumber = true                  -- set relative numbered lines
 vim.opt.numberwidth = 1                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false                            -- display lines as one long line
-vim.opt.scrolloff = 8                           -- is one of my fav
--- vim.opt.sidescrolloff = 8
+vim.opt.scrolloff = 3                           -- is one of my fav
+vim.opt.sidescrolloff = 3
 vim.opt.colorcolumn = "88"
 vim.g.do_filetype_lua = 1
 vim.g.python3_host_prog ='/home/tyler/.local/venv/nvim/bin/python'
---vim.g.did_load_filetypes = 0
 
--- GUI options
-vim.opt.guifont = "Cascadia Code, Regular:h11"
-vim.opt.linespace = 10
