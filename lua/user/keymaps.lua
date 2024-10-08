@@ -55,6 +55,11 @@ keymap("n", "<C-n>", "<C-w>j", opts)
 keymap("n", "<C-e>", "<C-w>k", opts)
 keymap("n", "<C-o>", "<C-w>l", opts)
 
+-- Swap between buffers quickly
+keymap('n', 'gn', ':bnext<CR>', opts)
+keymap('n', 'gp', ':bprevious<CR>', opts)
+keymap('n', 'gd', ':bdelete<CR>', opts)
+
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
