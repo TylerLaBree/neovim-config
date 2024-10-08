@@ -28,7 +28,7 @@ vim.opt.numberwidth = 1                         -- set number column width to 2 
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.scrolloff = 3                           -- is one of my fav
-vim.opt.sidescrolloff = 3
+vim.opt.sidescrolloff = 10
 vim.opt.colorcolumn = "88"
 vim.g.do_filetype_lua = 1
 vim.g.python3_host_prog ='/home/tyler/.local/venv/nvim/bin/python'
@@ -55,3 +55,25 @@ vim.api.nvim_create_autocmd({"FileType"}, {
   end
 })
 
+-- Auto scroll left
+function move_view_left()
+    if vim.g.enable_left_scroll and vim.fn.mode() == 'n' then
+        vim.api.nvim_command('normal! ze')
+    end
+end
+vim.g.enable_left_scroll = true
+vim.api.nvim_create_user_command(
+    'ToggleLeftScroll',
+    function()
+        vim.g.enable_left_scroll = not vim.g.enable_left_scroll
+        if vim.g.enable_left_scroll then
+            print("Left-scroll enabled")
+        else
+            print("Left-scroll disabled")
+        end
+    end,
+    {}
+)
+vim.cmd([[
+  autocmd CursorMoved,TextChanged * lua move_view_left()
+]])
