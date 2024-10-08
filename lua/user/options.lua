@@ -33,3 +33,25 @@ vim.opt.colorcolumn = "88"
 vim.g.do_filetype_lua = 1
 vim.g.python3_host_prog ='/home/tyler/.local/venv/nvim/bin/python'
 
+
+-- Text file settings
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = {"markdown", "text"},
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = "en_us"
+
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+
+    vim.opt_local.textwidth = 80
+
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end
+})
+
