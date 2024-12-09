@@ -27,19 +27,67 @@ require("lazy").setup({
     -- the colorscheme should be available when starting Neovim
     -- Colorschemes
     { "rose-pine/neovim", name = "rose-pine", lazy = false },
-    { "Mofiqul/adwaita.nvim", lazy = false },    -- Sick adwaita theme
+    { "Mofiqul/adwaita.nvim"},    -- Sick adwaita theme
     { "ntk148v/komau.vim", lazy = false },       -- Simple sepia themes
 
     -- UI
-    { "pocco81/true-zen.nvim", event = "VeryLazy" },   -- simple editing zen mode
+    {
+        "zk-org/zk-nvim",
+        config = function()
+            require("zk").setup({
+                -- can be "telescope", "fzf", "fzf_lua", "minipick", or "select" (`vim.ui.select`)
+                -- it's recommended to use "telescope", "fzf", "fzf_lua", or "minipick"
+                picker = "select",
+
+                lsp = {
+                    -- `config` is passed to `vim.lsp.start_client(config)`
+                    config = {
+                    cmd = { "zk", "lsp" },
+                    name = "zk",
+                    -- on_attach = ...
+                    -- etc, see `:h vim.lsp.start_client()`
+                    },
+
+                    -- automatically attach buffers in a zk notebook that match the given filetypes
+                    auto_attach = {
+                    enabled = true,
+                    filetypes = { "markdown" },
+                    },
+                },
+            })
+        end,
+    },
+    { -- Bug-free replacement for true-zen.
+        "cdmill/focus.nvim", 
+        cmd = { "Focus", "Zen", "Narrow" }, 
+        opts = {
+            window = {
+                backdrop = 1,
+                width = 100,
+            }
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    },
+    -- { "pocco81/true-zen.nvim", event = "VeryLazy" },   -- simple editing zen mode
     { "Bekaboo/deadcolumn.nvim" }, -- Better colorcolumn that appears when approaching
-    { "tiagovla/scope.nvim" },     -- shows each buffer as a tab
+    { "jose-elias-alvarez/buftabline.nvim" },     -- shows each buffer as a tab
     {
         "RRethy/vim-hexokinase",
         build = "make hexokinase",
         init = function()
         vim.g.Hexokinase_highlighters = { "virtual" }
         end,
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
     },
     {
     	-- LLM functionality
@@ -61,14 +109,6 @@ require("lazy").setup({
         	"MunifTanjim/nui.nvim",
         	--- The below dependencies are optional,
         	"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        	{
-            	-- Make sure to set this up properly if you have lazy=true
-            	'MeanderingProgrammer/render-markdown.nvim',
-                	opts = {
-                    	file_types = { "markdown", "Avante" },
-                	},
-            	ft = { "markdown", "Avante" },
-        	},
     	},
 	},
     

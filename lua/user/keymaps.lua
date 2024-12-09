@@ -40,13 +40,17 @@ if layout == "workman" then
     keymap("", "Y", "H", opts)
 end
 
+-- Swap between daily journals quickly
+keymap("n", "<C-n>", ":lua require('user.zk').open_journal_entry('next')<CR>", opts)
+keymap("n", "<C-p>", ":lua require('user.zk').open_journal_entry('prev')<CR>", opts)
+
 -- Set escape to normal mode in term mode
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
 
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-y>", "<C-w>h", opts)
-keymap("n", "<C-n>", "<C-w>j", opts)
+-- keymap("n", "<C-n>", "<C-w>j", opts)
 keymap("n", "<C-e>", "<C-w>k", opts)
 keymap("n", "<C-o>", "<C-w>l", opts)
 
