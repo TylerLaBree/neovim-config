@@ -1,4 +1,4 @@
-local using_gnome = not vim.env.DESKTOP_SESSION
+local using_gnome = vim.env.DESKTOP_SESSION
 --
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
