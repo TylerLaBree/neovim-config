@@ -1,3 +1,5 @@
+local using_gnome = not vim.env.DESKTOP_SESSION
+--
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -76,8 +78,9 @@ require("lazy").setup({
     {
         "RRethy/vim-hexokinase",
         build = "make hexokinase",
+        cond = using_gnome,
         init = function()
-        vim.g.Hexokinase_highlighters = { "virtual" }
+            vim.g.Hexokinase_highlighters = { "virtual" }
         end,
     },
     {
@@ -100,6 +103,7 @@ require("lazy").setup({
     {
     	-- LLM functionality
     	"yetone/avante.nvim",
+        cond = using_gnome,
     	event = "VeryLazy",
     	lazy = false,
     	version = false, -- set this if you want to always pull the latest change
