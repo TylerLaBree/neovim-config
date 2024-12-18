@@ -1,5 +1,5 @@
 local using_gnome = vim.env.DESKTOP_SESSION
---
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -23,9 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
-require("lazy").setup({
-  spec = {
+local plugins = {
     -- the colorscheme should be available when starting Neovim
     -- Colorschemes
     { "rose-pine/neovim", name = "rose-pine", lazy = false },
@@ -76,14 +74,6 @@ require("lazy").setup({
     { "Bekaboo/deadcolumn.nvim" }, -- Better colorcolumn that appears when approaching
     { "jose-elias-alvarez/buftabline.nvim" },     -- shows each buffer as a tab
     {
-        "RRethy/vim-hexokinase",
-        build = "make hexokinase",
-        cond = using_gnome,
-        init = function()
-            vim.g.Hexokinase_highlighters = { "virtual" }
-        end,
-    },
-    {
         'MeanderingProgrammer/render-markdown.nvim',
         -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
         -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
@@ -100,30 +90,7 @@ require("lazy").setup({
             })
         end,
     },
-    {
-    	-- LLM functionality
-    	"yetone/avante.nvim",
-        cond = using_gnome,
-    	event = "VeryLazy",
-    	lazy = false,
-    	version = false, -- set this if you want to always pull the latest change
-    	opts = {
-            provider = "openai",
-            auto_suggestions_provider = "openai",
-    	},
-    	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    	build = "make",
-    	-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    	dependencies = {
-        	"nvim-treesitter/nvim-treesitter",
-        	"stevearc/dressing.nvim",
-        	"nvim-lua/plenary.nvim",
-        	"MunifTanjim/nui.nvim",
-        	--- The below dependencies are optional,
-        	"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    	},
-	},
-    
+    --
     -- Other
     { "L3MON4D3/LuaSnip" },        -- Snippet tool
     { "rafamadriz/friendly-snippets" },  -- List of snippets
@@ -147,10 +114,48 @@ require("lazy").setup({
     -- if some code requires a module from an unloaded plugin, it will be automatically loaded.
     -- So for api plugins like devicons, we can always set lazy=true
     { "nvim-tree/nvim-web-devicons", lazy = true },
+}
+
+if using_gnome then
+
+    table.insert(plugins, {
+        "RRethy/vim-hexokinase",
+        build = "make hexokinase",
+        cond = using_gnome,
+        init = function()
+            vim.g.Hexokinase_highlighters = { "virtual" }
+        end,
+    })
+
+    table.insert(plugins, {
+        -- LLM functionality
+        "yetone/avante.nvim",
+        cond = using_gnome,
+        event = "VeryLazy",
+        lazy = false,
+        version = false, -- set this if you want to always pull the latest change
+        opts = {
+            provider = "openai",
+            auto_suggestions_provider = "openai",
+        },
+        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+        build = "make",
+        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+        },
+    })
+end
     
-    
-    
-  },
+
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = { plugins },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
