@@ -88,6 +88,14 @@ require("lazy").setup({
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {},
+        config = function()
+            vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+                pattern = { "*.md", "*.markdown" },
+                callback = function()
+                    vim.cmd("TSBufEnable highlight")
+                end,
+            })
+        end,
     },
     {
     	-- LLM functionality
