@@ -30,6 +30,7 @@ vim.opt.wrap = false                            -- display lines as one long lin
 vim.opt.scrolloff = 3                           -- is one of my fav
 vim.opt.sidescrolloff = 10
 vim.opt.colorcolumn = "88"
+vim.opt.fillchars = {eob = " "}                 -- hide end of buffer characters
 vim.g.do_filetype_lua = 1
 vim.g.python3_host_prog ='/home/tyler/.local/venv/nvim/bin/python'
 
