@@ -24,7 +24,7 @@ vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
 vim.opt.breakindent = true
-vim.opt.relativenumber = true                  -- set relative numbered lines
+vim.opt.relativenumber = true                   -- set relative numbered lines
 vim.opt.numberwidth = 1                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false                            -- display lines as one long line
@@ -80,5 +80,5 @@ vim.api.nvim_create_user_command(
     {}
 )
 vim.cmd([[
-  autocmd CursorMoved,TextChanged * lua move_view_left()
+    autocmd CursorMoved,TextChanged * lua move_view_left()
 ]])
