@@ -27,8 +27,10 @@ function M.open_journal_entry(direction)
 
   if index then
     if direction == "next" and index < #entries then
+      vim.cmd("bdelete")  -- Delete the current buffer
       vim.cmd("edit " .. entries[index + 1])
     elseif direction == "prev" and index > 1 then
+      vim.cmd("bdelete")  -- Delete the current buffer
       vim.cmd("edit " .. entries[index - 1])
     else
       print("No more journal entries in this direction.")

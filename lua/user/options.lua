@@ -1,3 +1,4 @@
+-- vim.opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
@@ -43,7 +44,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     vim.opt_local.spell = true
     vim.opt_local.spelllang = "en_us"
 
-    vim.opt_local.wrap = true
+    vim.opt_local.wrap = false
     vim.opt_local.linebreak = true
 
     vim.opt_local.breakindent = true
@@ -53,7 +54,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
 
-    vim.opt_local.textwidth = 80
+    vim.opt_local.textwidth = 88
 
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false

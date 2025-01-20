@@ -71,24 +71,18 @@ local plugins = {
         opts = {
             window = {
                 backdrop = 1,
-                width = 100,
+                width = 93,
             }
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         }
     },
-    -- { "pocco81/true-zen.nvim", event = "VeryLazy" },   -- simple editing zen mode
     { "Bekaboo/deadcolumn.nvim" }, -- Better colorcolumn that appears when approaching
     { "jose-elias-alvarez/buftabline.nvim" },     -- shows each buffer as a tab
     {
         'MeanderingProgrammer/render-markdown.nvim',
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-        ---@module 'render-markdown'
-        ---@type render.md.UserConfig
-        opts = {},
         config = function()
             vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
                 pattern = { "*.md", "*.markdown" },
@@ -96,9 +90,23 @@ local plugins = {
                     vim.cmd("TSBufEnable highlight")
                 end,
             })
+            require('render-markdown').setup({
+                latex = {
+                    enabled = false,
+                },
+                code = {
+                    style = 'normal',
+                    border = 'thick',
+                    position = 'right',
+                    width = 'block',
+                    left_pad = 2,
+                    right_pad = 4,
+                    sign = false,
+                },
+            })
         end,
     },
-    --
+
     -- Other
     { "L3MON4D3/LuaSnip" },        -- Snippet tool
     { "rafamadriz/friendly-snippets" },  -- List of snippets
