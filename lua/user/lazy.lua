@@ -26,9 +26,17 @@ vim.g.maplocalleader = "\\"
 local plugins = {
     -- the colorscheme should be available when starting Neovim
     -- Colorschemes
-    { "rose-pine/neovim", name = "rose-pine", lazy = false },
-    { "Mofiqul/adwaita.nvim"},    -- Sick adwaita theme
-    { "ntk148v/komau.vim", lazy = false },       -- Simple sepia themes
+    {
+        dir = "/home/tyler/.config/nvim/lua/plugins/style",
+        name = "style",
+        priority = 999,
+        dependencies = { 'nvim-lualine/lualine.nvim', 'nvim-tree/nvim-web-devicons', "rose-pine/neovim", "ntk148v/komau.vim" },
+        config = function ()
+            require('plugins.style.init').setup()
+            --require('plugins.style.freedesktop').setup()
+            require('lualine').setup()
+        end
+    },
 
     -- UI
     {
