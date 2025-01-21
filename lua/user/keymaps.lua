@@ -6,6 +6,8 @@ local term_opts = { silent = true }
 
 local keymap = vim.api.nvim_set_keymap
 
+vim.g.mapleader = " "
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -47,13 +49,6 @@ keymap("n", "<C-o>", ":lua require('user.zk').open_pdf()<CR>", opts)
 
 -- Set escape to normal mode in term mode
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
-
--- Normal --
--- Better window navigation
-keymap("n", "<C-y>", "<C-w>h", opts)
--- keymap("n", "<C-n>", "<C-w>j", opts)
-keymap("n", "<C-e>", "<C-w>k", opts)
-keymap("n", "<C-o>", "<C-w>l", opts)
 
 -- Swap between buffers quickly
 keymap('n', 'gn', ':bnext<CR>', opts)
