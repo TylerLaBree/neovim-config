@@ -36,6 +36,17 @@ vim.opt.fillchars = {eob = " "}                 -- hide end of buffer characters
 vim.g.do_filetype_lua = 1
 vim.g.python3_host_prog ='/home/tyler/.local/venv/nvim/bin/python'
 
+vim.api.nvim_create_autocmd('BufWritePost', {
+    desc = 'Compile markdown presentation with marp',
+    pattern = '/home/tyler/Documents/ZK_Journal/journal/dune-weekly/*.md',
+    -- once = true,
+    callback = function()
+        if vim.fn.expand('%:p:h') == '/home/tyler/Documents/ZK_Journal/journal/dune-weekly' then
+            require('user.zk').compile_with_marp()
+        end
+    end
+})
+
 
 -- Text file settings
 vim.api.nvim_create_autocmd({"FileType"}, {

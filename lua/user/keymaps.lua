@@ -43,6 +43,7 @@ end
 -- Swap between daily journals quickly
 keymap("n", "<C-n>", ":lua require('user.zk').open_journal_entry('next')<CR>", opts)
 keymap("n", "<C-p>", ":lua require('user.zk').open_journal_entry('prev')<CR>", opts)
+keymap("n", "<C-o>", ":lua require('user.zk').open_pdf()<CR>", opts)
 
 -- Set escape to normal mode in term mode
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)

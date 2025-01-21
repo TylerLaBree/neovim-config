@@ -116,7 +116,8 @@ local plugins = {
     { "hrsh7th/cmp-cmdline" },     -- cmdline completions
     { "saadparwaiz1/cmp_luasnip" },-- Compatibility
     { "lervag/vimtex" },           -- LaTeX compiling
-    
+    { "nvim-lua/plenary.nvim" },   -- Extra functions
+
     {
         "dstein64/vim-startuptime",
         -- lazy-load on a command
