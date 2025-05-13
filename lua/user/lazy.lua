@@ -33,7 +33,6 @@ local plugins = {
         dependencies = { 'nvim-lualine/lualine.nvim', 'nvim-tree/nvim-web-devicons', "rose-pine/neovim", "ntk148v/komau.vim" },
         config = function ()
             require('plugins.style.init').setup()
-            --require('plugins.style.freedesktop').setup()
             require('lualine').setup()
         end
     },
@@ -48,18 +47,15 @@ local plugins = {
                 picker = "select",
 
                 lsp = {
-                    -- `config` is passed to `vim.lsp.start_client(config)`
                     config = {
-                    cmd = { "zk", "lsp" },
-                    name = "zk",
-                    -- on_attach = ...
-                    -- etc, see `:h vim.lsp.start_client()`
+                        cmd = { "zk", "lsp" },
+                        name = "zk",
                     },
 
                     -- automatically attach buffers in a zk notebook that match the given filetypes
                     auto_attach = {
-                    enabled = true,
-                    filetypes = { "markdown" },
+                        enabled = true,
+                        filetypes = { "markdown" },
                     },
                 },
             })
@@ -73,9 +69,6 @@ local plugins = {
                 backdrop = 1,
                 width = 93,
             }
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
         }
     },
     { "Bekaboo/deadcolumn.nvim" }, -- Better colorcolumn that appears when approaching
