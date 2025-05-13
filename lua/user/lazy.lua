@@ -137,6 +137,7 @@ if using_gnome then
         end,
     })
 
+    --[[
     table.insert(plugins, {
         -- LLM functionality
         "yetone/avante.nvim",
@@ -160,6 +161,7 @@ if using_gnome then
             "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
         },
     })
+    --]]
 end
     
 
