@@ -40,11 +40,12 @@ local plugins = {
     -- UI
     {
         "zk-org/zk-nvim",
+        dependencies = { 'ibhagwan/fzf-lua'},
         config = function()
             require("zk").setup({
                 -- can be "telescope", "fzf", "fzf_lua", "minipick", or "select" (`vim.ui.select`)
                 -- it's recommended to use "telescope", "fzf", "fzf_lua", or "minipick"
-                picker = "select",
+                picker = "fzf_lua",
 
                 lsp = {
                     config = {
