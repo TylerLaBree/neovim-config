@@ -26,12 +26,11 @@ function M.open_journal_entry(direction)
   end
 
   if index then
-    if direction == "next" and index < #entries then
-      vim.cmd("bdelete")  -- Delete the current buffer
-      vim.cmd("edit " .. entries[index + 1])
-    elseif direction == "prev" and index > 1 then
-      vim.cmd("bdelete")  -- Delete the current buffer
-      vim.cmd("edit " .. entries[index - 1])
+    if (direction == "next" and index < #entries) or (direction == "prev" and index > 1) then
+        local target_index = direction == "next" and index + 1 or index - 1
+        local current_buf = vim.api.nvim_get_current_buf()
+        vim.cmd("edit " .. entries[target_index])
+        vim.api.nvim_buf_delete(current_buf, { force = false })
     else
       print("No more journal entries in this direction.")
     end
