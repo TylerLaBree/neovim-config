@@ -68,7 +68,7 @@ local plugins = {
         opts = {
             window = {
                 backdrop = 1,
-                width = 93,
+                width = 88,
             }
         }
     },

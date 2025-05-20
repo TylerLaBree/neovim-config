@@ -31,7 +31,6 @@ vim.opt.signcolumn = "yes"                      -- always show the sign column, 
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.scrolloff = 3                           -- is one of my fav
 vim.opt.sidescrolloff = 10
-vim.opt.colorcolumn = "88"
 vim.opt.fillchars = {eob = " "}                 -- hide end of buffer characters
 vim.g.do_filetype_lua = 1
 vim.g.python3_host_prog ='/home/tyler/.local/venv/nvim/bin/python'
@@ -66,6 +65,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
+    vim.opt_local.sidescrolloff = 0
   end
 })
 
