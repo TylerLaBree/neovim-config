@@ -69,9 +69,9 @@ function M.updateColorscheme()
     vim.api.nvim_set_hl(0, "SpellCap", { undercurl = true })
     vim.api.nvim_set_hl(0, "SpellLocal", { undercurl = true })
     vim.api.nvim_set_hl(0, "SpellRare", { undercurl = true })
-    vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#F5EEE6", bg = "#303030", italic = true })
-    vim.api.nvim_set_hl(0, "DiffChange", { fg = "#F5EEE6", bg = "#303030", italic = true })
-    vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#F5EEE6", bg = "#303030", italic = true })
+    vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#F5EEE6", bg = "#303030" })
+    vim.api.nvim_set_hl(0, "DiffChange", { fg = "#F5EEE6", bg = "#303030" })
+    vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#F5EEE6", bg = "#303030" })
 
   else
     -- Set light colorscheme
